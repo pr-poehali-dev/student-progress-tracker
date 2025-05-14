@@ -1,7 +1,9 @@
-import AnalyticsSection from "./dashboard/AnalyticsSection";
-import CoursesSection from "./dashboard/CoursesSection";
+import { useState } from "react";
+import StudentDashboard from "./dashboard/StudentDashboard";
 import DashboardHeader from "./dashboard/DashboardHeader";
 import StatsCardSection from "./dashboard/StatsCardSection";
+import AnalyticsSection from "./dashboard/AnalyticsSection";
+import CoursesSection from "./dashboard/CoursesSection";
 
 interface DashboardProps {
   role: "teacher" | "student";
@@ -9,14 +11,22 @@ interface DashboardProps {
 
 const Dashboard = ({ role }: DashboardProps) => {
   const isTeacher = role === "teacher";
-  const userName = isTeacher ? "Иванов Петр" : "Алексей";
 
+  // Если это аккаунт студента, используем специализированный дашборд
+  if (!isTeacher) {
+    return <StudentDashboard studentName="Алексей" />;
+  }
+
+  // Дашборд для преподавателя
   return (
     <div className="space-y-6">
-      <DashboardHeader userName={userName} role={role} />
-      <StatsCardSection role={role} />
-      <AnalyticsSection role={role} />
-      <CoursesSection role={role} />
+      <DashboardHeader userName="Иванов Петр" role="teacher" />
+
+      <StatsCardSection role="teacher" />
+
+      <AnalyticsSection role="teacher" />
+
+      <CoursesSection role="teacher" />
     </div>
   );
 };
