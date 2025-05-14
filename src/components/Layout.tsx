@@ -85,6 +85,18 @@ const Layout = ({ children }: LayoutProps) => {
                         <span>Отчетность</span>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarMenuButton tooltip="Управление заданиями">
+                        <Icon name="ClipboardList" />
+                        <span>Управление заданиями</span>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarMenuButton tooltip="Расписание занятий">
+                        <Icon name="Calendar" />
+                        <span>Расписание занятий</span>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
                   </>
                 ) : (
                   <>
@@ -102,20 +114,26 @@ const Layout = ({ children }: LayoutProps) => {
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                     <SidebarMenuItem>
-                      <SidebarMenuButton tooltip="Посещаемость">
-                        <Icon name="CalendarCheck" />
-                        <span>Посещаемость</span>
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
                       <SidebarMenuButton tooltip="Дедлайны">
                         <Icon name="Clock" />
                         <span>Дедлайны</span>
-                        <Badge className="ml-auto bg-red-500">3</Badge>
+                        <Badge className="ml-auto bg-red-500">2</Badge>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                     <SidebarMenuItem>
-                      <SidebarMenuButton tooltip="Сформировать справку">
+                      <SidebarMenuButton tooltip="Расписание">
+                        <Icon name="CalendarDays" />
+                        <span>Расписание</span>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarMenuButton tooltip="Мои задания">
+                        <Icon name="FileCheck" />
+                        <span>Мои задания</span>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarMenuButton tooltip="Справки">
                         <Icon name="FileOutput" />
                         <span>Сформировать справку</span>
                       </SidebarMenuButton>
@@ -144,6 +162,15 @@ const Layout = ({ children }: LayoutProps) => {
                   </SidebarMenuItem>
                 )}
                 <SidebarMenuItem>
+                  <SidebarMenuButton tooltip="Уведомления">
+                    <Icon name="Bell" />
+                    <span>Уведомления</span>
+                    <Badge className="ml-auto">
+                      {role === "teacher" ? "5" : "3"}
+                    </Badge>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
                   <SidebarMenuButton tooltip="Настройки">
                     <Icon name="Settings" />
                     <span>Настройки</span>
@@ -163,7 +190,9 @@ const Layout = ({ children }: LayoutProps) => {
             <div className="flex items-center gap-3 px-4 py-2">
               <Avatar className="h-9 w-9">
                 <AvatarImage src="https://github.com/shadcn.png" />
-                <AvatarFallback>ИП</AvatarFallback>
+                <AvatarFallback>
+                  {role === "teacher" ? "ИП" : "СА"}
+                </AvatarFallback>
               </Avatar>
               <div className="flex flex-col">
                 <div className="text-sm font-medium">

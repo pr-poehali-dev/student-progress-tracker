@@ -1,10 +1,10 @@
 import DashboardHeader from "./DashboardHeader";
 import StatsCardSection from "./StatsCardSection";
-import CoursesSection from "./CoursesSection";
 import CourseProgressSection from "./CourseProgressSection";
 import DetailedDeadlinesSection from "./DetailedDeadlinesSection";
 import AttendanceSection from "./AttendanceSection";
 import RatingSection from "./RatingSection";
+import CoursesSection from "./CoursesSection";
 
 interface StudentDashboardProps {
   studentName: string;
