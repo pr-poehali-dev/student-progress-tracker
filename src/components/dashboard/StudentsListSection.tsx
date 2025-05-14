@@ -1,7 +1,7 @@
-
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 import StudentCard from "@/components/StudentCard";
+import { Card } from "@/components/ui/card";
 
 const StudentsListSection = () => {
   return (

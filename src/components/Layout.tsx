@@ -1,18 +1,17 @@
-
 import { ReactNode, useState } from "react";
-import { 
-  SidebarProvider, 
-  Sidebar, 
-  SidebarHeader, 
-  SidebarContent, 
-  SidebarGroup, 
-  SidebarGroupLabel, 
-  SidebarMenu, 
-  SidebarMenuItem, 
+import {
+  SidebarProvider,
+  Sidebar,
+  SidebarHeader,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuItem,
   SidebarMenuButton,
   SidebarFooter,
   SidebarTrigger,
-  SidebarInset
+  SidebarInset,
 } from "@/components/ui/sidebar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -47,7 +46,7 @@ const Layout = ({ children }: LayoutProps) => {
               <SidebarTrigger className="ml-auto" />
             </div>
           </SidebarHeader>
-          
+
           <SidebarContent>
             <SidebarGroup>
               <SidebarGroupLabel>Главное меню</SidebarGroupLabel>
@@ -58,7 +57,7 @@ const Layout = ({ children }: LayoutProps) => {
                     <span>Панель управления</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
-                
+
                 {role === "teacher" ? (
                   <>
                     <SidebarMenuItem>
@@ -103,14 +102,27 @@ const Layout = ({ children }: LayoutProps) => {
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                     <SidebarMenuItem>
-                      <SidebarMenuButton tooltip="Справки">
+                      <SidebarMenuButton tooltip="Посещаемость">
+                        <Icon name="CalendarCheck" />
+                        <span>Посещаемость</span>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarMenuButton tooltip="Дедлайны">
+                        <Icon name="Clock" />
+                        <span>Дедлайны</span>
+                        <Badge className="ml-auto bg-red-500">3</Badge>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarMenuButton tooltip="Сформировать справку">
                         <Icon name="FileOutput" />
                         <span>Сформировать справку</span>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   </>
                 )}
-                
+
                 <SidebarMenuItem>
                   <SidebarMenuButton tooltip="Поиск">
                     <Icon name="Search" />
@@ -119,7 +131,7 @@ const Layout = ({ children }: LayoutProps) => {
                 </SidebarMenuItem>
               </SidebarMenu>
             </SidebarGroup>
-            
+
             <SidebarGroup>
               <SidebarGroupLabel>Дополнительно</SidebarGroupLabel>
               <SidebarMenu>
@@ -146,7 +158,7 @@ const Layout = ({ children }: LayoutProps) => {
               </SidebarMenu>
             </SidebarGroup>
           </SidebarContent>
-          
+
           <SidebarFooter>
             <div className="flex items-center gap-3 px-4 py-2">
               <Avatar className="h-9 w-9">
@@ -161,7 +173,7 @@ const Layout = ({ children }: LayoutProps) => {
                   {role === "teacher" ? "Преподаватель" : "Студент ИТ-101"}
                 </div>
               </div>
-              
+
               <Button
                 variant="ghost"
                 size="icon"
@@ -172,10 +184,14 @@ const Layout = ({ children }: LayoutProps) => {
                 <Icon name="LogOut" className="h-4 w-4" />
               </Button>
             </div>
-            
+
             <div className="flex items-center justify-between border-t px-4 py-3">
               <div className="flex items-center gap-2">
-                <Switch id="role-switch" checked={role === "teacher"} onCheckedChange={toggleRole} />
+                <Switch
+                  id="role-switch"
+                  checked={role === "teacher"}
+                  onCheckedChange={toggleRole}
+                />
                 <Label htmlFor="role-switch" className="text-xs">
                   {role === "teacher" ? "Преподаватель" : "Студент"}
                 </Label>
@@ -183,11 +199,9 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
           </SidebarFooter>
         </Sidebar>
-        
+
         <SidebarInset className="bg-gray-50">
-          <main className="flex-1 overflow-y-auto p-6">
-            {children}
-          </main>
+          <main className="flex-1 overflow-y-auto p-6">{children}</main>
         </SidebarInset>
       </div>
     </SidebarProvider>
